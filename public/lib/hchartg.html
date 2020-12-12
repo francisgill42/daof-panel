@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>::Chart::</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body>
+          <div id="barchart_values"></div>
+		  
+  
+     <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "", { role: "style" } ],
+        ["KSE-100", 20.6, "#00a896"],
+        ["12M - Bill", 10.0, "#00dec4"],
+        ["Inflation ", 9.5, "#09ffe2"],
+        ["SSCs", 9.2, "color: #00c8b0"],
+		["Gold  ", 7.9, "#2fffe6"],
+		["USDPKR", 5.4, "#6dffee"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "",
+        width: 1000,
+        height: 500,
+        bar: {groupWidth: "70%"},
+        legend: { position: "none" },
+      };
+	  
+	    
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+</body>
+
+</html>

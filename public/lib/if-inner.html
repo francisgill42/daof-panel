@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Combo Bar-Line Chart</title>
+    <script src="../js/Chart.bundle.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="width: 70%">
+        <canvas id="canvas"></canvas>
+    </div>
+    <script>
+        var chartData = {
+            labels: ["1 Year", "3 Year", "5 Year"],
+            datasets: [
+			{
+                type: 'line',
+                label: 'Return %',
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                fill: false,
+                data: [10488,11983,14545,,],
+				borderColor: [
+                'rgba(197,90,17,1)'
+            ],
+			backgroundColor: [
+                'rgba(255, 255, 255, 1)',
+            ],
+            },
+			
+			{
+                type: 'bar',
+                label: 'Value',
+                backgroundColor: window.chartColors.red,
+                data: [10100,11000,14100,0],
+                borderColor: '',
+                borderWidth: 0,
+				backgroundColor: [
+                'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)'
+            ],
+				
+            }, ]
+
+        };
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myMixedChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+					legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: ''
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    }
+                }
+            });
+        };
+
+        document.getElementById('randomizeData').addEventListener('click', function() {
+            chartData.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.map(function() {
+                    return randomScalingFactor();
+                });
+            });
+            window.myMixedChart.update();
+        });
+    </script>
+</body>
+
+</html>

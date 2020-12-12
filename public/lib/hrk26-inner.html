@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Combo Bar-Line Chart</title>
+    <script src="../js/Chart.bundle.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="width: 75%">
+        <canvas id="canvas"></canvas>
+    </div>
+    <script>
+        var chartData = {
+            labels: ["CY92", "CY93", "CY94", "CY95", "CY96", "CY97", "CY98", "CY99", "CY00", "CY01", "CY02", "CY03", "CY04", "CY05", "CY06", "CY07", "CY08", "CY09", "CY10", "CY11", "CY12", "CY13", "CY14", "CY15", "CY16", "CY17"],
+            datasets: [{
+                type: 'bar',
+                label: 'KSE-100 Return',
+                backgroundColor: window.chartColors.red,
+                data: [-26,74,-5,-27,-11,31,-46,49,7,-16,112,66,39,54,5,40,-58,60,28,-6,49,49,27,2,46,-15],
+                borderColor: '',
+                borderWidth: 0,
+				backgroundColor: [
+                'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+				'rgba(0, 168, 150, 1)',
+            ],
+				
+            },  {
+                type: 'line',
+                label: 'Long Term Average (26 years)',
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                fill: false,
+                data: [20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20],
+				borderColor: [
+                'rgba(197,90,17,1)'
+            ],
+			backgroundColor: [
+                'rgba(255, 255, 255, 1)',
+            ],
+            },]
+
+        };
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myMixedChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+					legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: ''
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    }
+                }
+            });
+        };
+
+        document.getElementById('randomizeData').addEventListener('click', function() {
+            chartData.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.map(function() {
+                    return randomScalingFactor();
+                });
+            });
+            window.myMixedChart.update();
+        });
+    </script>
+</body>
+
+</html>
