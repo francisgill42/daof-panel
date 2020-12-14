@@ -45,7 +45,7 @@ new WOW().init();
 <!--left-fixed -navigation-->
 <div class=" sidebar" role="navigation">
 <div class="navbar-collapse">
-<nav style="background:rgb(227, 46, 33);" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+<nav style="background:orange" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 
 <ul class="nav" id="side-menu">
 

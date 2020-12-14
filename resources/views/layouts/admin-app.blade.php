@@ -60,7 +60,7 @@
 	@if(Auth::user()->role_id == 1)
 	
 	<li>
-	<a target="_blank" href="http://localhost:8080/#/user/{{Auth::user()->id}}"><i class="fa fa-book nav_icon"></i> Account Opening Form</a>
+	<a target="_blank" href="http://45.76.106.58:81/#/user/{{Auth::user()->id}}"><i class="fa fa-book nav_icon"></i> Account Opening Form</a>
 	</li>
 	
 	<li>
