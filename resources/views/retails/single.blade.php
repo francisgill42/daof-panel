@@ -137,11 +137,10 @@ td.td_print_action{padding-left: 130px!important;}
 
 
 
-<div class="form-title" style="background:rgb(227, 46, 33);">
+<div class="form-title" style="background:orange;">
 
 <h4 style="color:white;">Form Id # {{$form_id}}
   <button type="button" class="btn btn-danger btnsiscussion" style="float:right;margin-top:-5px;" data-toggle="modal" data-target="#myModal">Discussion</button>
-
 </h4>
 
 
