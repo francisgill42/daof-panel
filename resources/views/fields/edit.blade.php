@@ -159,16 +159,12 @@ $ext = pathinfo($cdn[1], PATHINFO_EXTENSION);
 <input @if($cdn[1] == 'courier') checked @endisset value="courier" type="radio" name="cd[{{$cdn[0]}}]"> &nbsp; courier &nbsp;&nbsp;
 
 @elseif($cdn[0] == 'pob_country')
-<input class="form-control" type="text" name="cd[{{$cdn[0]}}]" value="{{explode('|',$cdn[1])[1]}}">
+
+<input class="form-control" type="text" name="cd[{{$cdn[0]}}]" value="{{$cdn[1]}}">
 
 @elseif($cdn[0] == 'pob_city')
-<input class="form-control" type="text" name="cd[{{$cdn[0]}}]" value="{{explode('|',$cdn[1])[1]}}">
+<input class="form-control" type="text" name="cd[{{$cdn[0]}}]" value="{{$cdn[1]}}">
 
-@elseif($cdn[0] == 'country1')
-<input class="form-control" type="text" name="cd[{{$cdn[0]}}]" value="{{explode('|',$cdn[1])[1]}}">
-
-@elseif($cdn[0] == 'city1')
-<input class="form-control" type="text" name="cd[{{$cdn[0]}}]" value="{{explode('|',$cdn[1])[1]}}">
 
 @else
 <input class="form-control" type="text" name="cd[{{$cdn[0]}}]" value="{{$cdn[1]}}">
